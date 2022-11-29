@@ -98,29 +98,14 @@ public class UrgenciesController: ControllerBase
         var urgencyResource = _mapper.Map<Urgency, UrgencyResource>(result.Resource);
         return Ok(urgencyResource);
     }
-    /*
-     
-[Route("/api/v1/categories/{categoryId}/tutorials")]
-public class CategoryTutorialsController : ControllerBase
-{
-    private readonly ITutorialService _tutorialService;
-    private readonly IMapper _mapper;
-
-    public CategoryTutorialsController(ITutorialService tutorialService, IMapper mapper)
+    
+    [HttpDelete("/api/guardians/{guardianId}/urgencies")]
+    public async Task<IActionResult> DeleteByGuardianId(int guardianId)
     {
-        _tutorialService = tutorialService;
-        _mapper = mapper;
+        var result = await _urgencyService.DeleteByGuardianIdAsync(guardianId);
+        if (!result.Success)
+            return BadRequest(result.Message);
+        var urgencyResource = _mapper.Map<Urgency, UrgencyResource>(result.Resource);
+        return Ok(urgencyResource);
     }
-
-    [HttpGet]
-    public async Task<IEnumerable<TutorialResource>> GetAllByCategoryIdAsync(int categoryId)
-    {
-        var tutorials = await _tutorialService.ListByCategoryIdAsync(categoryId);
-
-        var resources = _mapper.Map<IEnumerable<Tutorial>, IEnumerable<TutorialResource>>(tutorials);
-
-        return resources;
-    }
-}
-    */
 }

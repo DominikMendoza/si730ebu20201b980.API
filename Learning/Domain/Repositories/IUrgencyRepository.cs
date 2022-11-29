@@ -9,4 +9,5 @@ public interface IUrgencyRepository
     Task<Urgency> FindByIdAsync(int id);
     void Update(Urgency urgency);
     void Remove(Urgency urgency);
+    void RemoveByGuardianId(int guardianId);
 }

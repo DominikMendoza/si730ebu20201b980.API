@@ -12,11 +12,13 @@ namespace si730ebu20201b980.API.Learning.Controllers;
 public class GuardiansController: ControllerBase
 {
     private readonly IGuardianService _guardianService;
+    private readonly IUrgencyService _urgencyService;
     private readonly IMapper _mapper;
     
-    public GuardiansController(IGuardianService guardianService, IMapper mapper)
+    public GuardiansController(IGuardianService guardianService, IUrgencyService urgencyService, IMapper mapper)
     {
         _guardianService = guardianService;
+        _urgencyService = urgencyService;
         _mapper = mapper;
     }
     

@@ -41,4 +41,10 @@ public class UrgencyRepository : BaseRepository, IUrgencyRepository
     {
         _context.Urgencies.Remove(urgency);
     }
+    
+    public void RemoveByGuardianId(int guardianId)
+    {
+        var urgencies = _context.Urgencies.Where(p => p.GuardianId == guardianId);
+        _context.Urgencies.RemoveRange(urgencies);
+    }
 }

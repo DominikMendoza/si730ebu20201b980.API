@@ -12,4 +12,5 @@ public interface IUrgencyService
     Task<UrgencyResponse> SaveAsync(Urgency urgency);
     Task<UrgencyResponse> UpdateAsync(int id, Urgency urgency);
     Task<UrgencyResponse> DeleteAsync(int id);
+    Task<UrgencyResponse> DeleteByGuardianIdAsync(int guardianId);
 }

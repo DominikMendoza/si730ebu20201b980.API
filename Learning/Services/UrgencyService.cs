@@ -86,4 +86,21 @@ public class UrgencyService: IUrgencyService
             return new UrgencyResponse($"An error occurred when deleting the urgency: {e.Message}");
         }
     }
+    
+    public async Task<UrgencyResponse> DeleteByGuardianIdAsync(int guardianId)
+    {
+        var existingUrgency = await _urgencyRepository.ListByGuardianIdAsync(guardianId);
+        if (existingUrgency == null)
+            return new UrgencyResponse("Urgency not found.");
+        try
+        {
+            _urgencyRepository.RemoveByGuardianId(guardianId);
+            await _unitOfWork.CompleteAsync();
+            return new UrgencyResponse("Urgencies deleted.");
+        }
+        catch (Exception e)
+        {
+            return new UrgencyResponse($"An error occurred when deleting the urgencies: {e.Message}");
+        }
+    }
 }
