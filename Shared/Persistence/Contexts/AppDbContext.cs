@@ -1,4 +1,4 @@
-using si730ebu20201b980.API.Learning.Domain.Models;
+using si730ebu20201b980.API.Loyalty.Domain.Models;
 using si730ebu20201b980.API.Shared.Extensions;
 using Microsoft.EntityFrameworkCore;
 

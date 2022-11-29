@@ -1,7 +1,7 @@
-using si730ebu20201b980.API.Learning.Domain.Repositories;
-using si730ebu20201b980.API.Learning.Domain.Services;
-using si730ebu20201b980.API.Learning.Persistence.Repositories;
-using si730ebu20201b980.API.Learning.Services;
+using si730ebu20201b980.API.Loyalty.Domain.Repositories;
+using si730ebu20201b980.API.Loyalty.Domain.Services;
+using si730ebu20201b980.API.Loyalty.Persistence.Repositories;
+using si730ebu20201b980.API.Loyalty.Services;
 using si730ebu20201b980.API.Shared.Domain.Repositories;
 using si730ebu20201b980.API.Shared.Persistence.Contexts;
 using si730ebu20201b980.API.Shared.Persistence.Repositories;
@@ -31,7 +31,7 @@ builder.Services.AddSwaggerGen(options =>
         Version = "v1",
         Title = "ACME si730ebu20201b980 API",
         Description = "ACME si730ebu20201b980 RESTful API",
-        TermsOfService = new Uri("https://acme-learning.com/tos"),
+        TermsOfService = new Uri("https://acme-Loyalty.com/tos"),
         Contact = new OpenApiContact
         {
             Name = "ACME.studio",
@@ -39,8 +39,8 @@ builder.Services.AddSwaggerGen(options =>
         },
         License = new OpenApiLicense
         {
-            Name = "ACME Learning Center Resources License",
-            Url = new Uri("https://acme-learning.com/license")
+            Name = "ACME Loyalty Center Resources License",
+            Url = new Uri("https://acme-Loyalty.com/license")
         }
     });
     options.EnableAnnotations();
@@ -67,7 +67,7 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
-// Learning Injection Configuration
+// Loyalty Injection Configuration
 
 builder.Services.AddScoped<IGuardianRepository, GuardianRepository>();
 builder.Services.AddScoped<IGuardianService, GuardianService>();
@@ -78,8 +78,8 @@ builder.Services.AddScoped<IUrgencyService, UrgencyService>();
 // AutoMapper Configuration
 
 builder.Services.AddAutoMapper(
-    typeof(si730ebu20201b980.API.Learning.Mapping.ModelToResourceProfile),
-    typeof(si730ebu20201b980.API.Learning.Mapping.ResourceToModelProfile));
+    typeof(si730ebu20201b980.API.Loyalty.Mapping.ModelToResourceProfile),
+    typeof(si730ebu20201b980.API.Loyalty.Mapping.ResourceToModelProfile));
 
 var app = builder.Build();
 

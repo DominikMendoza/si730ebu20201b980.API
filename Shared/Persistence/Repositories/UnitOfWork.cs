@@ -1,4 +1,4 @@
-using si730ebu20201b980.API.Learning.Domain.Repositories;
+using si730ebu20201b980.API.Loyalty.Domain.Repositories;
 using si730ebu20201b980.API.Shared.Domain.Repositories;
 using si730ebu20201b980.API.Shared.Persistence.Contexts;
 
