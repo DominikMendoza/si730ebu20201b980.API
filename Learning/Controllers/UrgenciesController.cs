@@ -55,6 +55,8 @@ public class UrgenciesController: ControllerBase
         if (existingGuardian == null)
             return BadRequest("Guardian does not exist");
         
+        if (existingGuardian.FirstName == null || existingGuardian.LastName == null)
+            return BadRequest("Guardian does not have a name or last name");
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
         
@@ -102,6 +104,9 @@ public class UrgenciesController: ControllerBase
     [HttpDelete("/api/guardians/{guardianId}/urgencies")]
     public async Task<IActionResult> DeleteByGuardianId(int guardianId)
     {
+        var existingGuardian = await _guardianService.FindByIdAsync(guardianId);
+        if (existingGuardian == null)
+            return BadRequest("Guardian does not exist");
         var result = await _urgencyService.DeleteByGuardianIdAsync(guardianId);
         if (!result.Success)
             return BadRequest(result.Message);
