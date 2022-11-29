@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace si730ebu20201b980.API.Learning.Controllers;
 
 [ApiController]
-[Route("api/guardians/{guardianId}/[controller]")]
+[Route("api/[controller]")]
 public class UrgenciesController: ControllerBase
 {
     private readonly IUrgencyService _urgencyService;
@@ -30,7 +30,7 @@ public class UrgenciesController: ControllerBase
         return resources;
     }
     */
-    [HttpGet]
+    [HttpGet("/api/guardians/{guardianId}/urgencies")]
     public async Task<IEnumerable<UrgencyResource>> GetAllAsync(int guardianId)
     {
         var urgencies = await _urgencyService.ListByGuardianIdAsync(guardianId);
@@ -48,7 +48,7 @@ public class UrgenciesController: ControllerBase
         return Ok(urgencyResource);
     }
     
-    [HttpPost]
+    [HttpPost("/api/guardians/{guardianId}/urgencies")]
     public async Task<IActionResult> PostAsync(int guardianId, [FromBody] SaveUrgencyResource resource)
     {
         var existingGuardian = await _guardianService.FindByIdAsync(guardianId);
