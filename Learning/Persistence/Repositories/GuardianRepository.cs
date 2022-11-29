@@ -14,7 +14,7 @@ public class GuardianRepository : BaseRepository, IGuardianRepository
 
     public async Task<IEnumerable<Guardian>> ListAsync()
     {
-        return await _context.Guardians.ToListAsync();
+        return await _context.Guardians.Include(p=>p.Urgencies).ToListAsync();
     }
 
     public async Task AddAsync(Guardian guardian)
@@ -24,7 +24,7 @@ public class GuardianRepository : BaseRepository, IGuardianRepository
 
     public async Task<Guardian> FindByIdAsync(int id)
     {
-        return (await _context.Guardians.FindAsync(id))!;
+        return (await _context.Guardians.Include(p=>p.Urgencies).FirstOrDefaultAsync(p => p.Id == id))!;
     }
 
     public void Update(Guardian guardian)
