@@ -21,6 +21,6 @@ public class RewardRepository : BaseRepository, IRewardRepository
 
     public async Task AddAsync(Reward reward)
     {
-        _context.Rewards.AddAsync(reward);
+        await _context.Rewards.AddAsync(reward);
     }
 }
