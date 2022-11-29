@@ -91,7 +91,7 @@ public class UrgencyService: IUrgencyService
     {
         var existingUrgency = await _urgencyRepository.ListByGuardianIdAsync(guardianId);
         if (existingUrgency == null)
-            return new UrgencyResponse("Urgency not found.");
+            return new UrgencyResponse("Urgencies not found.");
         try
         {
             _urgencyRepository.RemoveByGuardianId(guardianId);
