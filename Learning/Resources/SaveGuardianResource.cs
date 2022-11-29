@@ -13,13 +13,13 @@ public class SaveGuardianResource
     public string Email { get; set; }
     
     [MaxLength(60)]
-    public string FirstName { get; set; }
+    public string? FirstName { get; set; }
     
     [MaxLength(60)]
-    public string LastName { get; set; }
+    public string? LastName { get; set; }
     
     [Required]
     public string Gender { get; set; }
     
-    public string Address { get; set; }
+    public string? Address { get; set; }
 }
