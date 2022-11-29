@@ -9,6 +9,7 @@ public class AppDbContext : DbContext
     
     public DbSet<Guardian> Guardians { get; set; }
     public DbSet<Urgency> Urgencies { get; set; }
+    public DbSet<Reward> Rewards { get; set; }
 
     public AppDbContext(DbContextOptions options) : base(options)
     {
@@ -43,6 +44,15 @@ public class AppDbContext : DbContext
             .HasOne(p => p.Guardian)
             .WithMany(p => p.Urgencies)
             .HasForeignKey(p => p.GuardianId);
+        
+        // Rewards
+        builder.Entity<Reward>().ToTable("Rewards");
+        builder.Entity<Reward>().HasKey(p => p.Id);
+        builder.Entity<Reward>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Reward>().Property(p => p.fleetId).IsRequired();
+        builder.Entity<Reward>().Property(p => p.name).IsRequired();
+        builder.Entity<Reward>().Property(p => p.description).IsRequired(false);
+        builder.Entity<Reward>().Property(p => p.score).IsRequired();
         // Apply Snake Case Naming Convention
         
         builder.UseSnakeCaseNamingConvention();

@@ -10,5 +10,6 @@ public class ModelToResourceProfile : Profile
     {
         CreateMap<Guardian, GuardianResource>();
         CreateMap<Urgency, UrgencyResource>();
+        CreateMap<Reward, RewardResource>();
     }
 }
