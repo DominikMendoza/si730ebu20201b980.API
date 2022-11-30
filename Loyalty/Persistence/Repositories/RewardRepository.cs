@@ -15,14 +15,14 @@ public class RewardRepository : BaseRepository, IRewardRepository
     public async Task<IEnumerable<Reward>> ListByScoreAsync(decimal score)
     {
         return await _context.Rewards
-            .Where(r => r.score >= score)
+            .Where(r => r.Score >= score)
             .ToListAsync();
     }
 
     public async Task<IEnumerable<Reward>> ListByFleetIdAsync(int fleetId)
     {
         return await _context.Rewards
-            .Where(r => r.fleetId == fleetId)
+            .Where(r => r.FleetId == fleetId)
             .ToListAsync();
     }
 

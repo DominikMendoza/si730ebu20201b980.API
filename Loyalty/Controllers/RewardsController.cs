@@ -39,15 +39,15 @@ public class RewardsController : ControllerBase
         if (enumerable.Any())
             for (int i = 0; i < enumerable.Count(); i++)
             {
-                if (enumerable.ElementAt(i).name == resource.name)
+                if (enumerable.ElementAt(i).Name == resource.Name)
                     return BadRequest("A Reward with the same name and Fleet ID already exists");
             }
         
-        if (resource.score == 0)
+        if (resource.Score == 0)
             return BadRequest("Score cannot be zero");
         
         var reward = _mapper.Map<SaveRewardResource, Reward>(resource);
-        reward.fleetId = fleetId;
+        reward.FleetId = fleetId;
         var result = await _rewardService.SaveAsync(reward);
         
         if (!result.Success)
