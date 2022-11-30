@@ -10,22 +10,12 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add CORS
-
-builder.Services.AddCors();
-
-// Add services to the container.
-
 builder.Services.AddControllers();
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(options =>
 {
-    // Add API Documentation Information
-    
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
@@ -46,8 +36,6 @@ builder.Services.AddSwaggerGen(options =>
     options.EnableAnnotations();
 });
 
-// Add Database Connection
-
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AppDbContext>(
@@ -56,24 +44,12 @@ builder.Services.AddDbContext<AppDbContext>(
         .EnableSensitiveDataLogging()
         .EnableDetailedErrors());
 
-// Add lowercase routes
-
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
-
-// Dependency Injection Configuration
-
-// Shared Injection Configuration
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-
-// Loyalty Injection Configuration
-
 builder.Services.AddScoped<IRewardRepository, RewardRepository>();
 builder.Services.AddScoped<IRewardService, RewardService>();
-
-
-// AutoMapper Configuration
 
 builder.Services.AddAutoMapper(
     typeof(si730ebu20201b980.API.Loyalty.Mapping.ModelToResourceProfile),
@@ -81,16 +57,12 @@ builder.Services.AddAutoMapper(
 
 var app = builder.Build();
 
-// Validation for ensuring Database Objects are created
-
 using (var scope = app.Services.CreateScope())
 using (var context = scope.ServiceProvider.GetService<AppDbContext>())
 {
     context.Database.EnsureCreated();
 }
 
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -100,13 +72,6 @@ if (app.Environment.IsDevelopment())
         options.RoutePrefix = "swagger";
     });
 }
-
-// Configure CORS 
-
-app.UseCors(x => x
-    .AllowAnyOrigin()
-    .AllowAnyMethod()
-    .AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
