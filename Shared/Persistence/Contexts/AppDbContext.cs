@@ -19,12 +19,12 @@ public class AppDbContext : DbContext
         
         // Rewards
         builder.Entity<Reward>().ToTable("Rewards");
-        builder.Entity<Reward>().HasKey(p => p.Id);
-        builder.Entity<Reward>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Reward>().Property(p => p.FleetId).IsRequired();
-        builder.Entity<Reward>().Property(p => p.Name).IsRequired();
-        builder.Entity<Reward>().Property(p => p.Description).IsRequired(false);
-        builder.Entity<Reward>().Property(p => p.Score).IsRequired();
+        builder.Entity<Reward>().HasKey(p => p.id);
+        builder.Entity<Reward>().Property(p => p.id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Reward>().Property(p => p.fleetId).IsRequired();
+        builder.Entity<Reward>().Property(p => p.name).IsRequired();
+        builder.Entity<Reward>().Property(p => p.description).IsRequired(false);
+        builder.Entity<Reward>().Property(p => p.score).IsRequired();
         
         // Apply Snake Case Naming Convention
         builder.UseSnakeCaseNamingConvention();
