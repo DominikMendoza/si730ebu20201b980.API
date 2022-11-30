@@ -8,8 +8,6 @@ public class ResourceToModelProfile : Profile
 {
     public ResourceToModelProfile()
     {
-        CreateMap<SaveGuardianResource, Guardian>();
-        CreateMap<SaveUrgencyResource, Urgency>();
         CreateMap<SaveRewardResource, Reward>();
     }
 }

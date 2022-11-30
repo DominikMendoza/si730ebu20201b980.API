@@ -69,10 +69,6 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // Loyalty Injection Configuration
 
-builder.Services.AddScoped<IGuardianRepository, GuardianRepository>();
-builder.Services.AddScoped<IGuardianService, GuardianService>();
-builder.Services.AddScoped<IUrgencyRepository, UrgencyRepository>();
-builder.Services.AddScoped<IUrgencyService, UrgencyService>();
 builder.Services.AddScoped<IRewardRepository, RewardRepository>();
 builder.Services.AddScoped<IRewardService, RewardService>();
 
