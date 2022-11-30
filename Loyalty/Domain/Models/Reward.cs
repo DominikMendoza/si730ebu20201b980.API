@@ -3,8 +3,8 @@
 public class Reward
 {
     public int Id { get; set; }
-    public int fleetId { get; set; }
-    public string name { get; set; }
-    public string? description { get; set; }
-    public decimal score { get; set; }
+    public int FleetId { get; set; }
+    public string Name { get; set; } = null!;
+    public string? Description { get; set; }
+    public decimal Score { get; set; }
 }

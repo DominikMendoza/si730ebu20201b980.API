@@ -35,7 +35,7 @@ public class RewardsController : ControllerBase
             return BadRequest(ModelState.GetErrorMessages());
         
         var reward = _mapper.Map<SaveRewardResource, Reward>(resource);
-        reward.fleetId = fleetId;
+        reward.FleetId = fleetId;
         var result = await _rewardService.SaveAsync(reward);
         
         if (!result.Success)
