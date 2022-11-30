@@ -5,10 +5,10 @@ namespace si730ebu20201b980.API.Loyalty.Resources;
 public class SaveRewardResource
 {
     [Required]
-    public string name { get; set; } = null!;
+    public string Name { get; set; } = null!;
     
-    public string? description { get; set; }
+    public string? Description { get; set; }
     
     [Required]
-    public decimal score { get; set; }
+    public decimal Score { get; set; }
 }

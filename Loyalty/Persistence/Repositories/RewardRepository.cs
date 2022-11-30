@@ -19,6 +19,13 @@ public class RewardRepository : BaseRepository, IRewardRepository
             .ToListAsync();
     }
 
+    public async Task<IEnumerable<Reward>> ListByFleetIdAsync(int fleetId)
+    {
+        return await _context.Rewards
+            .Where(r => r.FleetId == fleetId)
+            .ToListAsync();
+    }
+
     public async Task AddAsync(Reward reward)
     {
         await _context.Rewards.AddAsync(reward);

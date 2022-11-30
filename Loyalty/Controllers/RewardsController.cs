@@ -33,6 +33,17 @@ public class RewardsController : ControllerBase
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
+
+        var rewards = await _rewardService.ListByFleetIdAsync(fleetId);
+        if (rewards.Any())
+            for (int i = 0; i < rewards.Count(); i++)
+            {
+                if (rewards.ElementAt(i).Name == resource.Name)
+                    return BadRequest("A Reward with the same name and Fleet ID already exists");
+            }
+        
+        if (resource.Score == 0)
+            return BadRequest("Score cannot be zero");
         
         var reward = _mapper.Map<SaveRewardResource, Reward>(resource);
         reward.FleetId = fleetId;

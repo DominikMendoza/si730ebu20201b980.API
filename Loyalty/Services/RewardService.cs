@@ -21,6 +21,11 @@ public class RewardService : IRewardService
         return await _rewardRepository.ListByScoreAsync(score);
     }
 
+    public async Task<IEnumerable<Reward>> ListByFleetIdAsync(int fleetId)
+    {
+        return await _rewardRepository.ListByFleetIdAsync(fleetId);
+    }
+
     public async Task<RewardResponse> SaveAsync(Reward reward)
     {
         try
